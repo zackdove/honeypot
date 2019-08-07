@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+
+    <title>Honeypot</title>
+
+    <link
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" media="all"/>
+
+    <link
+          th:href="@{/webjars/typicons/2.0.7/typicons.min.css}"
+          rel="stylesheet" media="all"/>
+
+
+    <style>
+        .horizontal-group{
+            overflow-x: auto;
+        }
+        * {
+            font-family: "Courier New";
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid bg-white text-dark">
+    <p class="p-1">
+        Honeypot
+    </p>
+
+</div>
+
+<div class="container">
+    <div class="card mx-auto mt-5" style="width: 18rem">
+        <div class="card-header">
+            Honeypot
+        </div>
+        <div class="card-body">
+            <p class="card-text">A website for our honeypot</p>
+            <p class="card-text">In development.</p>
+            <p class="text-center">
+                <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseLinks" aria-expanded="false" aria-controls="collapseLinks">
+                    ⬖
+                </button>
+            </p>
+            <div class="collapse" id="collapseLinks">
+                <div class="card card-body">
+                    <a href="/">back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+<footer class="footer">
+        <div class="container-fluid py-5">
+
+        </div>
+
+        <div class="container fixed-bottom">
+            <p class="text-muted"><a href="/about">about</a></p>
+        </div>
+
+	<script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+
+    <script
+
+            th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+</footer>
+
+</html>
