@@ -10,21 +10,44 @@
     <title>Honeypot</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .duo-option:hover{
+            background-color: #ffc107;
+            color: white;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="d-flex flex-column bg-warning text-white mb-5" style="height:90vh">
-    <div class="container p-5 text-center mx-auto my-auto">
-        <h1 class="display-1">Honeypot🍯</h1>
+<div class="d-flex flex-column bg-warning text-white" style="height:90vh">
+    <div class="container p-5 text-center mx-auto my-auto yellow-hover">
+        <h1 class="display-1">🍯</h1>
     </div>
     <div class="container text-center">
-        <a href="#welcome-container" class="sliding-link" style="text-decoration:inherit; color:inherit"><h1>▼</h1></a>
+        <a href="#options-anchor" class="sliding-link" style="text-decoration:inherit; color:inherit"><h1>▼</h1></a>
     </div>
 </div>
 
-<div class="container-fluid pt-5" id="welcome-container">
+<div class="row text-warning mb-5 no-gutters" style="height:100vh">
+    <div class="col-6">
+        <a href="#info-anchor" class="sliding-link" style="color:inherit">
+            <div class="d-flex justify-content-center duo-option" style="height:100%" id="options-anchor">
+                <h1 class="display-1 my-auto">info</h1>
+            </div>
+        </a>
+    </div>
+    <div class="col-6">
+        <a href="dashboard" style="color:inherit">
+            <div class="d-flex justify-content-center duo-option" style="height:100%" id="options-anchor">
+                <h1 class="display-1 my-auto">dashboard</h1>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid pt-5" id="info-anchor">
     <div class="card mx-auto my-5 text-center" data-aos="zoom-in" style="width: 30rem">
         <div class="card-body">
             <h3 class="card-title">Welcome</h3>
@@ -73,11 +96,6 @@
 </body>
 
 <footer class="footer">
-        <div class="container-fluid py-5">
-        </div>
-        <div class="container fixed-bottom">
-            <p class="text-muted"><a href="/about">about</a></p>
-        </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"</script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -85,7 +103,7 @@
     <script>
         AOS.init({
             duration: 800,
-            anchorPlacement: 'center-center'
+            anchorPlacement: 'top-center'
         });
     </script>
     <script>
@@ -93,7 +111,7 @@
             e.preventDefault();
             var aid = $(this).attr("href");
             $('html,body').animate({scrollTop: $(aid).offset().top},1500);
-});
+        });
     </script>
 
 </footer>
