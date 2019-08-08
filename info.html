@@ -20,11 +20,11 @@
         <h1 class="display-1">Honeypot🍯</h1>
     </div>
     <div class="container text-center">
-        <h1>▼</h1>
+        <a href="#welcome-container" class="sliding-link" style="text-decoration:inherit; color:inherit"><h1>▼</h1></a>
     </div>
 </div>
 
-<div class="container-fluid pt-5">
+<div class="container-fluid pt-5" id="welcome-container">
     <div class="card mx-auto my-5 text-center" data-aos="zoom-in" style="width: 30rem">
         <div class="card-body">
             <h3 class="card-title">Welcome</h3>
@@ -87,6 +87,13 @@
             duration: 800,
             anchorPlacement: 'center-center'
         });
+    </script>
+    <script>
+        $(".sliding-link").click(function(e) {
+            e.preventDefault();
+            var aid = $(this).attr("href");
+            $('html,body').animate({scrollTop: $(aid).offset().top},1500);
+});
     </script>
 
 </footer>
