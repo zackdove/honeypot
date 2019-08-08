@@ -2,40 +2,32 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
-
     <title>Honeypot</title>
-
-    <link
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		rel="stylesheet"/>
-
-
-    <style>
-        .horizontal-group{
-            overflow-x: auto;
-        }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="container-fluid bg-warning text-white">
-    <h1 class="p-5 text-center display-1">
-        Honeypot</h1>
+<div class="d-flex flex-column bg-warning text-white" style="height:90vh">
+    <div class="container p-5 text-center mx-auto my-auto">
+        <h1 class="display-1">Honeypot🍯</h1>
+    </div>
+    <div class="container text-center">
+        <h1>▼</h1>
+    </div>
 </div>
 
 <div class="container">
-    <div class="card mx-auto mt-5" style="width: 18rem">
+    <div class="card mx-auto mt-5" data-aos="flip-left" style="width: 18rem">
         <div class="card-header">
-            Honeypot
+            Welcome
         </div>
         <div class="card-body">
             <p class="card-text">A website for our honeypot</p>
@@ -54,29 +46,22 @@
         </div>
     </div>
 </div>
-
-
-
 </body>
 
 <footer class="footer">
         <div class="container-fluid py-5">
-
         </div>
-
         <div class="container fixed-bottom">
             <p class="text-muted"><a href="/about">about</a></p>
         </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"</script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
-	<script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-            </script>
-
-    <script
-
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 </footer>
 
 </html>
