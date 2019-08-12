@@ -1,15 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
-<head th:include="fragments/header :: head (title='Events')">
+<head>
 </head>
 <body>
-
-<div class="container">
-    <h1>Events:</h1>
-    <button type="button" class="btn btn-warning" onclick="updateEventListFragment()">refresh</button>
-</div>
 
 
 <div id="eventListFragment" th:fragment="event_list_fragment" class="container-fluid pt-1">
@@ -52,16 +46,5 @@
     </div>
 </div>
 
-<div th:replace="fragments/footer :: footer">...</div>
-
 </body>
-<footer>
-    <script>
-        function updateEventListFragment() {
-            $.get("event_list_fragment", function(fragment) { // get from controller
-                $("#eventListFragment").replaceWith(fragment); // update snippet of page
-            });
-        }
-    </script>
-</footer>
 </html>

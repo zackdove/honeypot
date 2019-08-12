@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EventController {
@@ -21,5 +23,12 @@ public class EventController {
 		LOG.info("Listing events");
 		model.addAttribute("events", eventService.findAll());
 		return "event_list";
+	}
+
+	@GetMapping("/event_list_fragment")
+	public String getEventListFragment(ModelMap map){
+		map.addAttribute("events", eventService.findAll());
+		LOG.info("Refreshing events");
+		return "event_list :: #eventListFragment";
 	}
 }
