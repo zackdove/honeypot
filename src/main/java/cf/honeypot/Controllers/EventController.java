@@ -20,14 +20,13 @@ public class EventController {
 
 	@GetMapping("/events")
 	public String viewEvents(Model model){
-		LOG.info("Listing events");
-		model.addAttribute("events", eventService.findAll());
+		model.addAttribute("events", eventService.getTop100());
 		return "event_list";
 	}
 
 	@GetMapping("/event_list_fragment")
 	public String getEventListFragment(ModelMap map){
-		map.addAttribute("events", eventService.findAll());
+		map.addAttribute("events", eventService.getTop100());
 		LOG.info("Refreshing events");
 		return "event_list :: #eventListFragment";
 	}

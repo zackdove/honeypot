@@ -30,4 +30,8 @@ public class EventService {
 	}
 
 	public Event save(Event event){return eventRepository.save(event);}
+
+	public List<Event> getTop100(){
+		return eventRepository.getTop100();
+	}
 }
