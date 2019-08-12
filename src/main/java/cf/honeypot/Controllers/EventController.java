@@ -28,6 +28,7 @@ public class EventController {
 	public String getEventListFragment(ModelMap map){
 		map.addAttribute("events", eventService.getTop100());
 		LOG.info("Refreshing events");
+
 		return "event_list :: #eventListFragment";
 	}
 }

@@ -23,7 +23,7 @@ public class DataLoader implements ApplicationRunner {
 
 	public void run(ApplicationArguments args){
 
-		Long id = Long.valueOf(2);
+		Long id = Long.valueOf(69);
 
 		if (eventRepository.findById(id).isEmpty()){
 			LOG.info("initiatinng event 69");
