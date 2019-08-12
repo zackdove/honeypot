@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8"/>
@@ -43,8 +43,8 @@
         </a>
     </div>
     <div class="col-6">
-        <a href="dashboard.html" style="color:inherit">
-            <div class="d-flex justify-content-center duo-option" style="height:100%" id="options-anchor">
+        <a href="/dashboard" style="color:inherit">
+            <div class="d-flex justify-content-center duo-option" style="height:100%">
                 <p class="my-auto">dashboard</p>
             </div>
         </a>
@@ -81,7 +81,7 @@
     <div class="w-100"></div>
     <div class="col-10 col-md-7 mx-auto py-5">
         <div class="card mx-auto my-5 text-center" data-aos="zoom-in">
-            <img class="card-img-top" src="images/topology.png" alt="Topology">
+            <img class="card-img-top" th:src="@{/images/topology.png}" alt="Topology">
             <div class="card-body">
                 <h3 class="card-title">What will it look like?</h3>
                 <h5 class="card-text">An explanation of what it will look like</p>
