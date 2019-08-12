@@ -5,6 +5,7 @@ import cf.honeypot.Repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,11 +22,16 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
-	public void createEvent(Long id, String sourceIp, String content){
+	public void createEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary){
 		Event e = new Event();
 		e.setId(id);
-		e.setSourceIp(sourceIp);
-		e.setContent(content);
+		e.setDateTime(dateTime);
+		e.setSourceAddress(sourceAddress);
+		e.setDestAddress(destAddress);
+		e.setProtocol(protocol);
+		e.setDestPort(destPort);
+		e.setFlag(flag);
+		e.setSummary(summary);
 		save(e);
 	}
 

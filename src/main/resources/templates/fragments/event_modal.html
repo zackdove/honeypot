@@ -24,12 +24,32 @@
                             <td><span th:text="${event.getId()}"/></td>
                         </tr>
                         <tr>
-                            <th>Source IP:</th>
-                            <td><span th:text="${event.getSourceIp()}"/></td>
+                            <th>Date & Time</th>
+                            <td><span th:text="${event.getDateTime()}"/></td>
                         </tr>
                         <tr>
-                            <th>Content:</th>
-                            <td><span th:text="${event.getContent()}"/></td>
+                            <th>Source Address:</th>
+                            <td><span th:text="${event.getSourceAddress()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Dest Adress:</th>
+                            <td><span th:text="${event.getDestAddress()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Protocol:</th>
+                            <td><span th:text="${event.getProtocol()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Dest Port:</th>
+                            <td><span th:text="${event.getDestPort()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Flag:</th>
+                            <td><span th:text="${event.getFlag()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Summary:</th>
+                            <td><span th:text="${event.getSummary()}"/></td>
                         </tr>
                     </table>
                 </div>

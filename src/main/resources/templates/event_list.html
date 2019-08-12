@@ -24,15 +24,22 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Source IP</th>
+                            <th>Date & Time</th>
+                            <th>Source Address</th>
+                            <th>Dest Address</th>
+                            <th>Protocol</th>
+                            <th>Flag</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tr th:each="event: ${events}">
 
                             <td><span th:text="${event.getId()}"/></td>
-
-                            <td><span th:text="${event.getSourceIp()}"/></td>
+                            <td><span th:text="${event.getDateTime()}"/></td>
+                            <td><span th:text="${event.getSourceAddress()}"/></td>
+                            <td><span th:text="${event.getDestAddress()}"/></td>
+                            <td><span th:text="${event.getProtocol()}"/></td>
+                            <td><span th:text="${event.getFlag()}"/></td>
                             <td>
                                 <button type="button" class="btn btn-warning" data-toggle="modal"
                                         data-target="#eventModal" th:attrappend="data-target=${event.getId()}">

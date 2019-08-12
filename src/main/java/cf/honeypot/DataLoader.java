@@ -10,6 +10,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -24,10 +26,9 @@ public class DataLoader implements ApplicationRunner {
 	public void run(ApplicationArguments args){
 
 		Long id = Long.valueOf(69);
-
 		if (eventRepository.findById(id).isEmpty()){
 			LOG.info("initiatinng event 69");
-			eventService.createEvent(id, "69.69.69.69", "content placeholder");
+			eventService.createEvent(id , LocalDateTime.now(), "69.69.69.69", "420.420.420.420", "HTTP", "80", "white", "Put summary here");
 
 		}
 	}
