@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<head th:include="fragments/header :: head (title='Events')">
 </head>
 <body>
 
@@ -11,24 +10,17 @@
 <div class="container-fluid pt-1">
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
-
             <div th:if="${events.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no events</h2>
             </div>
-
             <div th:unless="${events.isEmpty()}">
-                <h2>Events:
-                    <a href="/room/add/" class="btn btn-danger float-right">
-                        <span class="typcn typcn-plus text-white"></span>
-                    </a>
-                </h2>
                 <div class="container-fluid overflow-auto">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>ID</th>
                             <th>Source IP</th>
-                            <th>Content</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tr th:each="event: ${events}">
@@ -36,13 +28,10 @@
                             <td><span th:text="${event.getId()}"/></td>
 
                             <td><span th:text="${event.getSourceIp()}"/></td>
-
-                            <td><span th:text="${event.getContent()}"/></td>
-
                             <td>
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#evenrModal" th:attrappend="data-target=${event.getId()}">
-                                    <span class="typcn typcn-info-large text-white"></span>
+                                <button type="button" class="btn btn-warning" data-toggle="modal"
+                                        data-target="#eventModal" th:attrappend="data-target=${event.getId()}">
+                                    i
                                 </button>
                                 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog"
                                      aria-labelledby="eventModalLabel" aria-hidden="true"
@@ -57,6 +46,8 @@
         </div>
     </div>
 </div>
+
+<div th:replace="fragments/footer :: footer">...</div>
 
 </body>
 </html>
