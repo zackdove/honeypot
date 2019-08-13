@@ -26,7 +26,7 @@ public class DataLoader implements ApplicationRunner {
 	public void run(ApplicationArguments args){
 
 		Long id = Long.valueOf(69);
-		if (eventRepository.findById(id).isEmpty()){
+		if (!eventRepository.findById(id).isPresent()){
 			LOG.info("initiatinng event 69");
 			eventService.createEvent(id , LocalDateTime.now(), "69.69.69.69", "420.420.420.420", "HTTP", "80", "white", "Put summary here");
 

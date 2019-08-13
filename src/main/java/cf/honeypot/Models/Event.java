@@ -1,9 +1,9 @@
 package cf.honeypot.Models;
 
 
-import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
