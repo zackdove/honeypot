@@ -41,4 +41,6 @@ public class EventService {
 	public List<Event> getTop100(){
 		return eventRepository.getTop100();
 	}
+
+	public List<Event> findAllBySourceAddressEquals(String sourceAddress){return eventRepository.findAllBySourceAddressEquals(sourceAddress);};
 }

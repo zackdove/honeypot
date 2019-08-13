@@ -29,7 +29,9 @@
                         </tr>
                         <tr>
                             <th>Source Address:</th>
-                            <td><span th:text="${event.getSourceAddress()}"/></td>
+                            <td><a th:href="@{'/events/sourceAddress/' + ${event.getSourceAddress()}}">
+                                <span th:text="${event.getSourceAddress()}"/>
+                            </td>
                         </tr>
                         <tr>
                             <th>Dest Adress:</th>

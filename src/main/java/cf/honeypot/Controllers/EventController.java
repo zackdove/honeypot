@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,6 +21,7 @@ public class EventController {
 
 	@GetMapping("/events")
 	public String viewEvents(Model model){
+		model.addAttribute("filter", "All events" );
 		model.addAttribute("events", eventService.getTop100());
 		return "event_list";
 	}
@@ -30,5 +32,12 @@ public class EventController {
 		LOG.info("Refreshing events");
 
 		return "event_list :: #eventListFragment";
+	}
+
+	@GetMapping("/events/sourceAddress/{sourceAddress}")
+	public String viewEvents(@PathVariable String sourceAddress, Model model){
+		model.addAttribute("events", eventService.findAllBySourceAddressEquals(sourceAddress));
+		model.addAttribute("filter", "Source Address : " + sourceAddress );
+		return "event_list";
 	}
 }
