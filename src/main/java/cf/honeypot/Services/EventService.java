@@ -22,7 +22,7 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
-	public void createEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary){
+	public void createEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary, Long packetNum){
 		Event e = new Event();
 		e.setId(id);
 		e.setDateTime(dateTime);
@@ -32,6 +32,7 @@ public class EventService {
 		e.setDestPort(destPort);
 		e.setFlag(flag);
 		e.setSummary(summary);
+		e.setPacketNum(packetNum);
 		save(e);
 	}
 

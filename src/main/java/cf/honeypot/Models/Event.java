@@ -26,6 +26,9 @@ public class Event {
 
 	private String summary;
 
+
+	private Long packetNum;
+
 	public Event(){}
 
 	public Long getId(){return id;}
@@ -86,5 +89,13 @@ public class Event {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public Long getPacketNum() {
+		return packetNum;
+	}
+
+	public void setPacketNum(Long packetNum) {
+		this.packetNum = packetNum;
 	}
 }
