@@ -30,24 +30,28 @@
                         <tr>
                             <th>Source Address:</th>
                             <td><a th:href="@{'/events/sourceAddress/' + ${event.getSourceAddress()}}">
-                                <span th:text="${event.getSourceAddress()}"/>
+                                <span th:text="${event.getSourceAddress()}"/></a>
                             </td>
                         </tr>
                         <tr>
                             <th>Dest Adress:</th>
-                            <td><span th:text="${event.getDestAddress()}"/></td>
+                            <td><a th:href="@{'/events/destAddress/' + ${event.getDestAddress()}}">
+                                <span th:text="${event.getDestAddress()}"/></a></td>
                         </tr>
                         <tr>
                             <th>Protocol:</th>
-                            <td><span th:text="${event.getProtocol()}"/></td>
+                            <td><a th:href="@{'/events/protocol/' + ${event.getProtocol()}}">
+                                <span th:text="${event.getProtocol()}"/></a></td>
+                        </tr>
                         </tr>
                         <tr>
                             <th>Dest Port:</th>
-                            <td><span th:text="${event.getDestPort()}"/></td>
+                            <td><a th:href="@{'/events/destPort/' + ${event.getDestPort()}}"><span th:text="${event.getDestPort()}"/></a></td>
                         </tr>
                         <tr>
                             <th>Flag:</th>
-                            <td><span th:text="${event.getFlag()}"/></td>
+                            <td><a th:href="@{'/events/flag/' + ${event.getFlag()}}">
+                                <span th:text="${event.getFlag()}"/></a></td>
                         </tr>
                         <tr>
                             <th>Summary:</th>

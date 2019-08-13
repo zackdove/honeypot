@@ -18,4 +18,12 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 
 
 	List<Event> findAllBySourceAddressEquals(String sourceAddress);
+
+	List<Event> findAllByDestAddressEquals(String destAddress);
+
+	List<Event> findAllByProtocolEquals(String protocol);
+
+	List<Event> findAllByDestPortEquals(String destPort);
+
+	List<Event> findAllByFlagEquals(String flag);
 }

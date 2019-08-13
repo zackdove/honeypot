@@ -17,11 +17,6 @@ public class WebController {
 		return "index";
 	}
 
-	@RequestMapping("/dashboard")
-	public String requestDashboard(){
-		LOG.info("Get request for /dashboard");
-		return "dashboard";
-	}
 
 	@RequestMapping("/placeholder")
 	public String requestPlaceholder(){

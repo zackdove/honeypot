@@ -42,5 +42,13 @@ public class EventService {
 		return eventRepository.getTop100();
 	}
 
-	public List<Event> findAllBySourceAddressEquals(String sourceAddress){return eventRepository.findAllBySourceAddressEquals(sourceAddress);};
+	public List<Event> findAllBySourceAddressEquals(String sourceAddress){return eventRepository.findAllBySourceAddressEquals(sourceAddress);}
+
+	public List<Event> findAllByDestAddressEquals(String destAddress){return eventRepository.findAllByDestAddressEquals(destAddress);}
+
+	public List<Event> findAllByProtocolEquals(String protocol){return eventRepository.findAllByProtocolEquals(protocol);}
+
+	public List<Event> findAllByDestPortEquals(String destPort){return eventRepository.findAllByDestPortEquals(destPort);}
+
+	public List<Event> findAllByFlagEquals(String flag){return eventRepository.findAllByFlagEquals(flag);}
 }

@@ -5,71 +5,83 @@
 <head th:include="fragments/header :: head (title='Events')">
 </head>
 <body>
-
-<div class="container">
-    <button type="button" class="btn btn-warning" onclick="updateEventListFragment()">refresh</button>
+<div class="d-flex bg-warning text-white" style="height:10vh">
+    <div class="container-fluid pl-5 my-auto">
+        <h1><a href="/" style="color:inherit">home</a> / dashboard</h1>
+    </div>
 </div>
+<div class="d-flex" style="height:90vh">
+    <div class="embed-responsive d-none d-lg-block">
+        <div id="eventListFragment" th:fragment="event_list_fragment" class="container-fluid pt-1">
+            <div class="row">
+                <div class="col-md-8 col-12 mx-auto">
+                    <div th:if="${events.isEmpty()}" class="container text-center">
+                        <h2 class="pt-5 pb-3">There are no events</h2>
+                    </div>
+                    <div th:unless="${events.isEmpty()}">
+                        <div class="container-fluid overflow-auto">
+                            <h1 th:text="${filter}"></h1>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date & Time</th>
+                                    <th>Source Address</th>
+                                    <th>Dest Address</th>
+                                    <th>Protocol</th>
+                                    <th>Flag</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tr th:each="event: ${events}">
 
-
-<div id="eventListFragment" th:fragment="event_list_fragment" class="container-fluid pt-1">
-    <div class="row">
-        <div class="col-md-8 col-12 mx-auto">
-            <div th:if="${events.isEmpty()}" class="container text-center">
-                <h2 class="pt-5 pb-3">There are no events</h2>
-            </div>
-            <div th:unless="${events.isEmpty()}">
-                <div class="container-fluid overflow-auto">
-                    <h1 th:text="${filter}"></h1>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Date & Time</th>
-                            <th>Source Address</th>
-                            <th>Dest Address</th>
-                            <th>Protocol</th>
-                            <th>Flag</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tr th:each="event: ${events}">
-
-                            <td><span th:text="${event.getId()}"/></td>
-                            <td><span th:text="${event.getDateTime()}"/></td>
-                            <td><span th:text="${event.getSourceAddress()}"/></td>
-                            <td><span th:text="${event.getDestAddress()}"/></td>
-                            <td><span th:text="${event.getProtocol()}"/></td>
-                            <td><span th:text="${event.getFlag()}"/></td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal"
-                                        data-target="#eventModal" th:attrappend="data-target=${event.getId()}">
-                                    i
-                                </button>
-                                <div class="modal fade" id="eventModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="eventModalLabel" aria-hidden="true"
-                                     th:attrappend="id=${event.getId()}">
-                                    <div th:replace="fragments/event_modal :: event_modal">...</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                                    <td><span th:text="${event.getId()}"/></td>
+                                    <td><span th:text="${event.getDateTime()}"/></td>
+                                    <td><span th:text="${event.getSourceAddress()}"/></td>
+                                    <td><span th:text="${event.getDestAddress()}"/></td>
+                                    <td><span th:text="${event.getProtocol()}"/></td>
+                                    <td><span th:text="${event.getFlag()}"/></td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal"
+                                                data-target="#eventModal" th:attrappend="data-target=${event.getId()}">
+                                            i
+                                        </button>
+                                        <div class="modal fade" id="eventModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="eventModalLabel" aria-hidden="true"
+                                             th:attrappend="id=${event.getId()}">
+                                            <div th:replace="fragments/event_modal :: event_modal">...</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container-fluid text-center mx-auto my-auto d-block d-lg-none">
+        <h1>Your screen is too small, please view on a larger screen</h1>
+    </div>
 </div>
+<div class="container">
+    <button type="button" class="btn btn-warning" onclick="updateEventListFragment()" th:if="${filter.equals('All events')}">refresh</button>
+</div>
+
+
+
 
 <div th:replace="fragments/footer :: footer">...</div>
 
 </body>
 <footer>
-    <script>
+    <script th:if="${filter.equals('All events')}">
         function updateEventListFragment() {
             $.get("event_list_fragment", function(fragment) { // get from controller
                 $("#eventListFragment").replaceWith(fragment); // update snippet of page
             });
         };
-        // setInterval(updateEventListFragment,5000);
+        setInterval(updateEventListFragment,5000);
     </script>
 </footer>
 </html>

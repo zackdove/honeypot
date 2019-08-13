@@ -29,15 +29,44 @@ public class EventController {
 	@GetMapping("/event_list_fragment")
 	public String getEventListFragment(ModelMap map){
 		map.addAttribute("events", eventService.getTop100());
+		map.addAttribute("filter", "All events" );
 		LOG.info("Refreshing events");
 
 		return "event_list :: #eventListFragment";
 	}
 
 	@GetMapping("/events/sourceAddress/{sourceAddress}")
-	public String viewEvents(@PathVariable String sourceAddress, Model model){
+	public String viewEventsBySourceAddress(@PathVariable String sourceAddress, Model model){
 		model.addAttribute("events", eventService.findAllBySourceAddressEquals(sourceAddress));
 		model.addAttribute("filter", "Source Address : " + sourceAddress );
+		return "event_list";
+	}
+
+	@GetMapping("/events/destAddress/{destAddress}")
+	public String viewEventsByDestAddress(@PathVariable String destAddress, Model model){
+		model.addAttribute("events", eventService.findAllByDestAddressEquals(destAddress));
+		model.addAttribute("filter", "Destination Address : " + destAddress );
+		return "event_list";
+	}
+
+	@GetMapping("/events/protocol/{protocol}")
+	public String viewEventsByProtocol(@PathVariable String protocol, Model model){
+		model.addAttribute("events", eventService.findAllByProtocolEquals(protocol));
+		model.addAttribute("filter", "Protocol : " + protocol );
+		return "event_list";
+	}
+
+	@GetMapping("/events/destPort/{destPort}")
+	public String viewEventsByDestPort(@PathVariable String destPort, Model model){
+		model.addAttribute("events", eventService.findAllByDestPortEquals(destPort));
+		model.addAttribute("filter", "Destination Port : " + destPort );
+		return "event_list";
+	}
+
+	@GetMapping("/events/flag/{flag}")
+	public String viewEventsByFlag(@PathVariable String flag, Model model){
+		model.addAttribute("events", eventService.findAllByFlagEquals(flag));
+		model.addAttribute("filter", "Flag : " + flag );
 		return "event_list";
 	}
 }
