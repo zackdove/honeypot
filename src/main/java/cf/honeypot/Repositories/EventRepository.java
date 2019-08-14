@@ -26,4 +26,5 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	List<Event> findAllByDestPortEquals(String destPort);
 
 	List<Event> findAllByFlagEquals(String flag);
+
 }

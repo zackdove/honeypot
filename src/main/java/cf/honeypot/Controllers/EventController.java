@@ -1,5 +1,6 @@
 package cf.honeypot.Controllers;
 
+import cf.honeypot.Models.Event;
 import cf.honeypot.Services.EventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,13 @@ public class EventController {
 		return "event_list";
 	}
 
+	@GetMapping("/event/{id}")
+	public String viewEvent(@PathVariable String id, Model model){
+		LOG.info("Get requets for id = " + id);
+		model.addAttribute("event", eventService.findById(id).get());
+		return "event";
+	}
+
 	@GetMapping("/event_list_fragment")
 	public String getEventListFragment(ModelMap map){
 		map.addAttribute("events", eventService.getTop100());
@@ -34,6 +42,7 @@ public class EventController {
 
 		return "event_list :: #eventListFragment";
 	}
+
 
 	@GetMapping("/events/sourceAddress/{sourceAddress}")
 	public String viewEventsBySourceAddress(@PathVariable String sourceAddress, Model model){

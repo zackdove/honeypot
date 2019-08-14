@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -22,7 +23,7 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
-	public void createEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary, Long packetNum){
+	public Event createEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary, Long packetNum){
 		Event e = new Event();
 		e.setId(id);
 		e.setDateTime(dateTime);
@@ -33,6 +34,11 @@ public class EventService {
 		e.setFlag(flag);
 		e.setSummary(summary);
 		e.setPacketNum(packetNum);
+		return e;
+	}
+
+	public void createAndSaveEvent(Long id, LocalDateTime dateTime, String sourceAddress, String destAddress, String protocol, String destPort, String flag, String summary, Long packetNum){
+		Event e = createEvent(id, dateTime, sourceAddress, destAddress,  protocol,  destPort,  flag,  summary,  packetNum);
 		save(e);
 	}
 
@@ -51,4 +57,13 @@ public class EventService {
 	public List<Event> findAllByDestPortEquals(String destPort){return eventRepository.findAllByDestPortEquals(destPort);}
 
 	public List<Event> findAllByFlagEquals(String flag){return eventRepository.findAllByFlagEquals(flag);}
+
+	public Optional<Event> findById(String id){
+		Optional<Event> optionalEvent = eventRepository.findById(Long.valueOf(id));
+		return optionalEvent;
+	}
+
+	public Event getBlankEvent(){
+		return createEvent(Long.valueOf(1), null, null, null, null, null, null, null, null);
+	}
 }
