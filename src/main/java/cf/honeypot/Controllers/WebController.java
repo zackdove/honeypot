@@ -18,6 +18,12 @@ public class WebController {
 	}
 
 
+	@RequestMapping("/dashboard")
+	public String requestDashboard(){
+		LOG.info("Get request for /dashboard");
+		return "dashboard";
+	}
+
 	@RequestMapping("/placeholder")
 	public String requestPlaceholder(){
 		LOG.info("Get request for /placeholder");
