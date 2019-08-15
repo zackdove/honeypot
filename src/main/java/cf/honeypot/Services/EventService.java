@@ -106,7 +106,7 @@ public class EventService {
 			events.removeIf(event -> !event.getSourceAddress().equals(filter.getSourceAddress()));
 		}
 		LOG.info("Size " + events.size());
-		if (!filter.getDestAddress().isEmpty()){
+		if (!filter.getDestAddress().isEmpty() ){
 			events.removeIf(event -> !event.getDestAddress().equals(filter.getDestAddress()));
 		}
 		LOG.info("Size " + events.size());

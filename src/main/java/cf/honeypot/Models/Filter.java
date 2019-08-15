@@ -42,6 +42,14 @@ public class Filter {
 		this.flag = flag;
 	}
 
+	public Filter(){
+		sourceAddress = "";
+		destAddress = "";
+		protocol = "";
+		destPort = "";
+		flag = "";
+	}
+
 	private String sourceAddress;
 
 	private String destAddress;

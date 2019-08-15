@@ -28,7 +28,6 @@ public class EventController {
 
 	@PostMapping("/events/filter")
 	public String filterEvents(@ModelAttribute Filter filter, Model model){
-		//Change this to the filter funciton
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
 		return "event_list";
 	}
@@ -52,36 +51,46 @@ public class EventController {
 
 	@GetMapping("/events/sourceAddress/{sourceAddress}")
 	public String viewEventsBySourceAddress(@PathVariable String sourceAddress, Model model){
-		model.addAttribute("events", eventService.findAllBySourceAddressEquals(sourceAddress));
-		model.addAttribute("filter", "Source Address : " + sourceAddress );
+		Filter filter = new Filter();
+		filter.setSourceAddress(sourceAddress);
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", new Filter());
 		return "event_list";
 	}
 
 	@GetMapping("/events/destAddress/{destAddress}")
 	public String viewEventsByDestAddress(@PathVariable String destAddress, Model model){
-		model.addAttribute("events", eventService.findAllByDestAddressEquals(destAddress));
-		model.addAttribute("filter", "Destination Address : " + destAddress );
+		Filter filter = new Filter();
+		filter.setDestAddress(destAddress);
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", new Filter());
 		return "event_list";
 	}
 
 	@GetMapping("/events/protocol/{protocol}")
 	public String viewEventsByProtocol(@PathVariable String protocol, Model model){
-		model.addAttribute("events", eventService.findAllByProtocolEquals(protocol));
-		model.addAttribute("filter", "Protocol : " + protocol );
+		Filter filter = new Filter();
+		filter.setProtocol(protocol);
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", new Filter());
 		return "event_list";
 	}
 
 	@GetMapping("/events/destPort/{destPort}")
 	public String viewEventsByDestPort(@PathVariable String destPort, Model model){
-		model.addAttribute("events", eventService.findAllByDestPortEquals(destPort));
-		model.addAttribute("filter", "Destination Port : " + destPort );
+		Filter filter = new Filter();
+		filter.setDestPort(destPort);
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", new Filter());
 		return "event_list";
 	}
 
 	@GetMapping("/events/flag/{flag}")
 	public String viewEventsByFlag(@PathVariable String flag, Model model){
-		model.addAttribute("events", eventService.findAllByFlagEquals(flag));
-		model.addAttribute("filter", "Flag : " + flag );
+		Filter filter = new Filter();
+		filter.setFlag(flag);
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", new Filter());
 		return "event_list";
 	}
 }

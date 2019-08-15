@@ -7,47 +7,48 @@
 <body>
 <div class="d-flex bg-warning text-white" style="height:10vh">
     <div class="container-fluid pl-5 my-auto">
-        <h1><a href="/" style="color:inherit">home</a> / dashboard</h1>
+        <h1><a href="/" style="color:inherit">home</a> / <a href="/dashboard" style="color:inherit">dashboard</a> / events</h1>
     </div>
 </div>
 <div class="d-flex" style="height:90vh">
     <div class="embed-responsive d-none d-lg-block">
         <div id="eventListFragment" class="container-fluid pt-1">
             <div class="row justify-content-center pt-1">
-                <div class="col-2">
+                <div class="col-3">
                     <h3>Filters:</h3>
                     <form action="#" th:action="@{/events/filter}" th:object="${filter}" method="post">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Protocol</span>
                             </div>
-                            <input th:field="*{protocol}" type="text" class="form-control" placeholder="Protocol" aria-label="Protocol" aria-describedby="basic-addon1">
+                            <input th:field="*{protocol}" type="text" class="form-control" aria-label="Protocol" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Source Address</span>
                             </div>
-                            <input th:field="*{sourceAddress}" type="text" class="form-control" placeholder="Source Address" aria-label="Source Address" aria-describedby="basic-addon1">
+                            <input th:field="*{sourceAddress}" type="text" class="form-control"  aria-label="Source Address" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Destination Address</span>
+                                <span class="input-group-text" id="basic-addon1">Dest Address</span>
                             </div>
-                            <input th:field="*{destAddress}" type="text" class="form-control" placeholder="Destination Address" aria-label="Destination Address" aria-describedby="basic-addon1">
+                            <input th:field="*{destAddress}" type="text" class="form-control" aria-label="Destination Address" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Port</span>
                             </div>
-                            <input th:field="*{destPort}" type="text" class="form-control" placeholder="Port" aria-label="Port" aria-describedby="basic-addon1">
+                            <input th:field="*{destPort}" type="text" class="form-control" aria-label="Port" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Flag</span>
                             </div>
-                            <input th:field="*{flag}" type="text" class="form-control" placeholder="Flag" aria-label="Flag" aria-describedby="basic-addon1">
+                            <input th:field="*{flag}" type="text" class="form-control" aria-label="Flag" aria-describedby="basic-addon1">
                         </div>
-                        <input type="submit" value="Submit" />
+                        <input type="submit" class="btn btn-warning btn-block" value="Submit" />
+                        <a href="/events" class="btn btn-warning btn-block">Clear</a>
                     </form>
                 </div>
                 <div class="col-8">
