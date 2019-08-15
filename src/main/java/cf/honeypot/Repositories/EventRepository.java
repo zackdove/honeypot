@@ -30,4 +30,5 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 
 	List<Event> findByDateTimeAfter(LocalDateTime time);
 
+
 }

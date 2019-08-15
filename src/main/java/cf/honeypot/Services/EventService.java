@@ -1,7 +1,11 @@
 package cf.honeypot.Services;
 
+import cf.honeypot.Controllers.EventController;
 import cf.honeypot.Models.Event;
+import cf.honeypot.Models.Filter;
 import cf.honeypot.Repositories.EventRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +18,8 @@ import java.util.Optional;
 public class EventService {
 
 	private EventRepository eventRepository;
+
+	private static final Logger LOG = LoggerFactory.getLogger(EventController.class);
 
 	@Autowired
 	public EventService(EventRepository eventRepository){
@@ -89,5 +95,12 @@ public class EventService {
 			colour = "red";
 		}
 		return colour;
+	}
+
+	public List<Event> getEventsFromFilter(Filter filter){
+		if (filter.getDestPort().isEmpty()){
+			LOG.info("Port is empty");
+		}
+		return eventRepository.getTop100();
 	}
 }

@@ -1,6 +1,7 @@
 package cf.honeypot.Controllers;
 
 import cf.honeypot.Models.Event;
+import cf.honeypot.Models.Filter;
 import cf.honeypot.Services.EventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EventController {
@@ -22,8 +21,16 @@ public class EventController {
 
 	@GetMapping("/events")
 	public String viewEvents(Model model){
-		model.addAttribute("filter", "All events" );
 		model.addAttribute("events", eventService.getTop100());
+		model.addAttribute("filter", new Filter());
+		return "event_list";
+	}
+
+	@PostMapping("/events/filter")
+	public String filterEvents(@ModelAttribute Filter filter, Model model){
+		LOG.info("Filtering is here: " + filter.toString());
+		//Change this to the filter funciton
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
 		return "event_list";
 	}
 
