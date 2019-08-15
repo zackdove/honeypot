@@ -66,4 +66,9 @@ public class EventService {
 	public Event getBlankEvent(){
 		return createEvent(Long.valueOf(1), null, null, null, null, null, null, null, null);
 	}
+
+	public String getDashboardAlertColour(){
+		String colour = "red";
+		return colour;
+	}
 }

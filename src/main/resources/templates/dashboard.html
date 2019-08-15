@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:include="fragments/header :: head (title='Events')">
+
 </head>
 <body>
 <div class="d-flex bg-warning text-white" style="height:10vh">
@@ -13,6 +14,8 @@
 <div class="d-flex" style="height:90vh">
     <div class="container-fluid pt-1">
         dashboard
+        <div class="circle" th:style="'background-color:'+${colour}">
+        </div>
     </div>
 </div>
 
