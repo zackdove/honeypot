@@ -28,7 +28,6 @@ public class EventController {
 
 	@PostMapping("/events/filter")
 	public String filterEvents(@ModelAttribute Filter filter, Model model){
-		LOG.info("Filtering is here: " + filter.toString());
 		//Change this to the filter funciton
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
 		return "event_list";

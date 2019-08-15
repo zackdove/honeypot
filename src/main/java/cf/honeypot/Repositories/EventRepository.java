@@ -3,6 +3,7 @@ package cf.honeypot.Repositories;
 import cf.honeypot.Models.Event;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -29,6 +30,5 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	List<Event> findAllByFlagEquals(String flag);
 
 	List<Event> findByDateTimeAfter(LocalDateTime time);
-
 
 }

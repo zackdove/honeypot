@@ -98,9 +98,30 @@ public class EventService {
 	}
 
 	public List<Event> getEventsFromFilter(Filter filter){
-		if (filter.getDestPort().isEmpty()){
-			LOG.info("Port is empty");
+		List<Event> events = eventRepository.getTop100();
+		LOG.info("Protocol = " + filter.getProtocol());
+		LOG.info("Size " + events.size());
+		if (!filter.getSourceAddress().isEmpty()){
+			LOG.info("Filtering by source, so source is still here");
+			events.removeIf(event -> !event.getSourceAddress().equals(filter.getSourceAddress()));
 		}
-		return eventRepository.getTop100();
+		LOG.info("Size " + events.size());
+		if (!filter.getDestAddress().isEmpty()){
+			events.removeIf(event -> !event.getDestAddress().equals(filter.getDestAddress()));
+		}
+		LOG.info("Size " + events.size());
+		if (!filter.getProtocol().isEmpty()){
+			events.removeIf(event -> !event.getProtocol().equals(filter.getProtocol()));
+		}
+		LOG.info("Size " + events.size());
+		if (!filter.getDestPort().isEmpty()){
+			events.removeIf(event -> !event.getDestPort().equals(filter.getDestPort()));
+		}
+		LOG.info("Size " + events.size());
+		if (!filter.getFlag().isEmpty()){
+			events.removeIf(event -> !event.getFlag().equals(filter.getFlag()));
+		}
+		LOG.info("Size " + events.size());
+		return events;
 	}
 }
