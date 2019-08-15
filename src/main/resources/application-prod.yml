@@ -7,9 +7,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bookerdb
-    username: user
-    password: password
+    url: jdbc:mysql://localhost:3306/honeylogs
+    username: honeypot
+    password: raspberry
 
 
   jpa:
