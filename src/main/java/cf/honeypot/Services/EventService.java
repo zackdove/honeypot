@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,8 +68,26 @@ public class EventService {
 		return createEvent(Long.valueOf(1), null, null, null, null, null, null, null, null);
 	}
 
+
+	//If there are 5 ambers in the last hour, the alert is amber, if there are 10 ambers or one red, the alert is red.
+	//Else green.
 	public String getDashboardAlertColour(){
-		String colour = "red";
+		LocalDateTime anHourAgo = LocalDateTime.now().minusHours(1);
+		List<Event> eventsInLastHour = eventRepository.findByDateTimeAfter(anHourAgo);
+		String colour = "green";
+		Integer danger = 0;
+		for (Event event : eventsInLastHour){
+			if (event.getFlag().equals("amber")){
+				danger+=10;
+			} else if (event.getFlag().equals("red")){
+				danger+= 100;
+			}
+		}
+		if (danger >= 50){
+			colour = "amber";
+		} else if (danger >= 100){
+			colour = "red";
+		}
 		return colour;
 	}
 }

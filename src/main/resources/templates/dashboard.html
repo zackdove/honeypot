@@ -12,13 +12,21 @@
     </div>
 </div>
 <div class="d-flex" style="height:90vh">
-    <div class="container-fluid pt-1">
-        dashboard
-        <div class="circle" th:style="'background-color:'+${colour}">
-        </div>
+    <div class="container-fluid pt-1 text-center">
+        <a href="/events">
+            <div class="circle mx-auto my-5" th:style="'background-color:'+${colour}"></div>
+            <div th:if="${colour.equals('green')}" class="container">
+                <h3 style="text-decoration: none; color: black">No unsual activity detected on the honeypot</br>Click to view events</h3>
+            </div>
+            <div th:if="${colour.equals('amber')}" class="container">
+                <h3 style="text-decoration: none; color: black">Some unusual activity detected on the honeypot, inspect the logs and follow the guidebook</br>Click to view events</h3>
+            </div>
+            <div th:if="${colour.equals('red')}" class="container">
+            <h3 style="text-decoration: none; color: black">Major activity detected on the honeypot! Escalate immediately!</br>Click to view events</h3>
+            </div>
+        </a>
     </div>
 </div>
-
 
 
 
