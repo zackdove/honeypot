@@ -15,7 +15,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	List<Event> findAll();
 	Optional<Event> findById(Long id);
 
-	@Query(value = "SELECT * FROM Event e ORDER BY e.id DESC LIMIT 100", nativeQuery = true)
+	@Query(value = "SELECT id, dateTime, sourceAddress, destAddress, protocol, destPort, flag, summary, packetNum FROM Event e ORDER BY e.id DESC LIMIT 100", nativeQuery = true)
 	List<Event> getTop100();
 
 
