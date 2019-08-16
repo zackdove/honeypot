@@ -11,8 +11,7 @@
     </div>
 </div>
 <div class="d-flex" style="height:90vh">
-    <div class="embed-responsive d-none d-lg-block">
-        <div id="eventListFragment" class="container-fluid pt-1">
+        <div class="container-fluid pt-1">
             <div class="row justify-content-center pt-3">
                 <div class="col-3">
                     <h3>Filters:</h3>
@@ -49,15 +48,17 @@
                         </div>
                         <input type="submit" class="btn btn-warning btn-block" value="Submit" />
                         <a href="/events" class="btn btn-warning btn-block">Clear</a>
+                        <button type="button" class="btn btn-warning btn-block" th:onclick="'javascript:updateEventListFragment();'">Refresh
+                        </button>
                     </form>
                 </div>
-                <div class="col-8 pt-1">
+                <div id="eventListFragment" class="col-8 pt-1">
                     <div th:if="${events.isEmpty()}" class="container text-center">
                         <h2 class="pt-5 pb-3">There are no events</h2>
                     </div>
                     <div th:unless="${events.isEmpty()}">
                         <div class="container-fluid overflow-auto">
-                            <table class="table">
+                            <table class="table overflow-auto">
                                 <thead>
                                 <tr>
                                     <th>Flag</th>
@@ -92,10 +93,6 @@
         <h1>Your screen is too small, please view on a larger screen</h1>
     </div>
 </div>
-<div class="container">
-    <button type="button" class="btn btn-warning" onclick="updateEventListFragment()">refresh
-    </button>
-</div>
 
 
 <div th:replace="fragments/footer :: footer">...</div>
@@ -104,11 +101,17 @@
 <footer>
     <script>
         function updateEventListFragment() {
-            $.get("event_list_fragment", function (fragment) { // get from controller
-                $("#eventListFragment").replaceWith(fragment); // update snippet of page
+            $.post({
+                url : "/event_list_fragment",
+                data : $('filter').serialize(),
+                dataType : "json",
+                async : false,
+                success : function (fragment) { // get from controller
+                    $("#eventListFragment").replaceWith(fragment); // update snippet of page
+                }
             });
         };
-        // setInterval(updateEventListFragment, 5000);
+        setInterval(updateEventListFragment, 5000);
     </script>
 </footer>
 </html>

@@ -6,10 +6,13 @@ import cf.honeypot.Services.EventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 @Controller
 public class EventController {
@@ -39,12 +42,12 @@ public class EventController {
 		return "event";
 	}
 
-	@GetMapping("/event_list_fragment")
-	public String getEventListFragment(ModelMap map){
-		map.addAttribute("events", eventService.getTop100());
-		map.addAttribute("filter", "All events" );
-		LOG.info("Refreshing events");
+	@PostMapping(value = "/event_list_fragment")
+	public String getEventListFragment(@ModelAttribute("filter") Filter filter, Model model){
+		LOG.info("Refreshing events with protocol filter = " + filter.getProtocol());
 
+		model.addAttribute("events", eventService.getEventsFromFilter(filter));
+		model.addAttribute("filter", filter );
 		return "event_list :: #eventListFragment";
 	}
 
