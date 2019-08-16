@@ -89,9 +89,10 @@ public class EventService {
 				danger+= 100;
 			}
 		}
-		if (danger >= 50){
-			colour = "amber";
-		} else if (danger >= 100){
+		LOG.info("Danger = " + danger);
+		if (danger >= 10){
+			colour = "orange";
+		} if (danger >= 50){
 			colour = "red";
 		}
 		return colour;

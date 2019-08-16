@@ -19,6 +19,7 @@ public class DashboardController {
 	public String requestDashboard(Model model){
 		LOG.info("Get request for /dashboard");
 		String colour = eventService.getDashboardAlertColour();
+		LOG.info("Colour for dash= " + colour);
 		model.addAttribute("colour", colour);
 		return "dashboard";
 	}
