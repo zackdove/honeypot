@@ -7,7 +7,7 @@
 <body>
 <div class="d-flex bg-warning text-white" style="height:10vh">
     <div class="container-fluid pl-5 my-auto">
-        <h1><a href="/" style="color:inherit">home</a> / dashboard</h1>
+        <h1><a href="/" style="color:inherit">home</a> / <a href="/dashboard" style="color:inherit">dashboard</a> / events</h1>
     </div>
 </div>
     <div class="container-fluid pt-1">
@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <th>Date & Time</th>
-                            <td><span th:text="${event.getDateTime()}"/></td>
+                            <td><span th:text="${#temporals.format(event.getDateTime(), 'dd-MM-yyyy HH:mm:ss')}"/></td>
                         </tr>
                         <tr>
                             <th>Source Address:</th>

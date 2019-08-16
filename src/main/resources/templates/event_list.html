@@ -10,7 +10,7 @@
         <h1><a href="/" style="color:inherit">home</a> / <a href="/dashboard" style="color:inherit">dashboard</a> / events</h1>
     </div>
 </div>
-<div class="row justify-content-center pt-3">
+<div class="row justify-content-center no-gutters pt-3">
     <div class="col-3">
         <h3>Filters:</h3>
         <form action="#" th:action="@{/events/filter}" th:object="${filter}" method="post">
@@ -50,7 +50,7 @@
             </button>
         </form>
     </div>
-    <div id="eventListFragment" class="col-8 pt-1" style="height: 85vh; overflow:auto">
+    <div id="eventListFragment" class="col-8 pt-1 pl-5" style="height: 85vh; overflow:auto">
         <div th:if="${events.isEmpty()}" class="container text-center">
             <h2 class="pt-5 pb-3">There are no events</h2>
         </div>
@@ -58,7 +58,7 @@
             <thead>
             <tr>
                 <th>Flag</th>
-                <th>Date & Time</th>
+                <th>Time (Hours:Mins:Seconds)</th>
                 <th>Source Address</th>
                 <th>Dest Address</th>
                 <th>Protocol</th>
@@ -67,7 +67,7 @@
             </thead>
             <tr th:each="event: ${events}">
                 <td class="align-middle"><div class="flag" th:style="'background-color:'+${event.getFlag()}"></div></td>
-                <td class="align-middle"><span th:text="${event.getDateTime()}"/></td>
+                <td class="align-middle"><span th:text="${#temporals.format(event.getDateTime(), 'HH:mm:ss')}"/></td>
                 <td class="align-middle"><span th:text="${event.getSourceAddress()}"/></td>
                 <td class="align-middle"><span th:text="${event.getDestAddress()}"/></td>
                 <td class="align-middle"><span th:text="${event.getProtocol()}"/></td>
@@ -102,7 +102,7 @@
                 }
             });
         };
-        setInterval(updateEventListFragment, 5000);
+        // setInterval(updateEventListFragment, 5000);
     </script>
 </footer>
 </html>
