@@ -54,7 +54,7 @@ public class EventController {
 		Filter filter = new Filter();
 		filter.setSourceAddress(sourceAddress);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
-		model.addAttribute("filter", new Filter());
+		model.addAttribute("filter", filter);
 		return "event_list";
 	}
 
@@ -63,7 +63,7 @@ public class EventController {
 		Filter filter = new Filter();
 		filter.setDestAddress(destAddress);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
-		model.addAttribute("filter", new Filter());
+		model.addAttribute("filter", filter);
 		return "event_list";
 	}
 
@@ -72,7 +72,7 @@ public class EventController {
 		Filter filter = new Filter();
 		filter.setProtocol(protocol);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
-		model.addAttribute("filter", new Filter());
+		model.addAttribute("filter", filter);
 		return "event_list";
 	}
 
@@ -81,7 +81,7 @@ public class EventController {
 		Filter filter = new Filter();
 		filter.setDestPort(destPort);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
-		model.addAttribute("filter", new Filter());
+		model.addAttribute("filter", filter);
 		return "event_list";
 	}
 
@@ -90,7 +90,7 @@ public class EventController {
 		Filter filter = new Filter();
 		filter.setFlag(flag);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
-		model.addAttribute("filter", new Filter());
+		model.addAttribute("filter", filter);
 		return "event_list";
 	}
 }
