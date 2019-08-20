@@ -83,7 +83,7 @@ public class EventService {
 		String colour = "green";
 		Integer danger = 0;
 		for (Event event : eventsInLastHour){
-			if (event.getFlag().equals("amber")){
+			if (event.getFlag().equals("amber") || event.getFlag().equals("orange")){
 				danger+=10;
 			} else if (event.getFlag().equals("red")){
 				danger+= 100;
@@ -101,7 +101,6 @@ public class EventService {
 	public List<Event> getEventsFromFilter(Filter filter){
 		List<Event> events = eventRepository.getTop100();
 		LOG.info("Protocol = " + filter.getProtocol());
-		LOG.info("Size " + events.size());
 		if (!filter.getSourceAddress().isEmpty()){
 			LOG.info("Filtering by source, so source is still here");
 			events.removeIf(event -> !event.getSourceAddress().equals(filter.getSourceAddress()));

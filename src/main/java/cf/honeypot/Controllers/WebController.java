@@ -1,10 +1,11 @@
 package cf.honeypot.Controllers;
 
+import cf.honeypot.Models.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class WebController {
@@ -25,6 +26,7 @@ public class WebController {
 		LOG.info("Get request for /placeholder");
 		return "powerbi-placeholder";
 	}
+
 
 
 }

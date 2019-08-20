@@ -50,7 +50,7 @@
             </button>
         </form>
     </div>
-    <div id="eventListFragment" class="col-8 pt-1 pl-5" style="height: 85vh; overflow:auto">
+    <div id="eventListFragment" th:fragment="eventListFragment" class="col-8 pt-1 pl-5" style="height: 85vh; overflow:auto">
         <div th:if="${events.isEmpty()}" class="container text-center">
             <h2 class="pt-5 pb-3">There are no events</h2>
         </div>
@@ -90,19 +90,26 @@
 
 </body>
 <footer>
-    <script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
         function updateEventListFragment() {
-            $.post({
+            $.ajax({
+                type : "POST",
                 url : "/event_list_fragment",
-                data : $('filter').serialize(),
-                dataType : "json",
-                async : false,
+                data : {
+                    sourceAddress : [[${filter.getSourceAddress()}]],
+                    destAddress : [[${filter.getDestAddress()}]],
+                    protocol : [[${filter.getProtocol()}]],
+                    destPort : [[${filter.getDestPort()}]],
+                    flag : [[${filter.getFlag()}]]
+                },
                 success : function (fragment) { // get from controller
                     $("#eventListFragment").replaceWith(fragment); // update snippet of page
                 }
             });
         };
-        // setInterval(updateEventListFragment, 5000);
+        setInterval(updateEventListFragment, 5000);
+        /*]]>*/
     </script>
 </footer>
 </html>
