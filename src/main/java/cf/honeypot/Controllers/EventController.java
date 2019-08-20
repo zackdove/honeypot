@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.awt.*;
 
 @Controller
@@ -42,10 +43,15 @@ public class EventController {
 		return "event";
 	}
 
-	@PostMapping(value = "/event_list_fragment")
-	public String getEventListFragment(@ModelAttribute("filter") Filter filter, Model model){
-		LOG.info("Refreshing events with protocol filter = " + filter.getProtocol());
-
+	@RequestMapping(value = "/event_list_fragment", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getEventListFragment(@RequestParam("sourceAddress") String sourceAddress, @RequestParam("destAddress") String destAddress, @RequestParam("protocol") String protocol, @RequestParam("destPort") String destPort, @RequestParam("flag") String flag, Model model){
+		LOG.info("Refreshing events with protocol filter = " + protocol);
+		Filter filter = new Filter();
+		filter.setSourceAddress(sourceAddress);
+		filter.setDestAddress(destAddress);
+		filter.setProtocol(protocol);
+		filter.setDestPort(destPort);
+		filter.setFlag(flag);
 		model.addAttribute("events", eventService.getEventsFromFilter(filter));
 		model.addAttribute("filter", filter );
 		return "event_list :: #eventListFragment";
