@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,5 +23,13 @@ public class DashboardController {
 		LOG.info("Colour for dash= " + colour);
 		model.addAttribute("colour", colour);
 		return "dashboard";
+	}
+
+	@GetMapping("/dash_fragment")
+	public String getDashFragment(Model model){
+		LOG.info("Refreshing dash with protocol filter");
+		String colour = eventService.getDashboardAlertColour();
+		model.addAttribute("colour", colour);
+		return "dashboard :: #dashFragment";
 	}
 }

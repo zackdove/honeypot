@@ -12,7 +12,7 @@
     </div>
 </div>
 <div class="d-flex" style="height:90vh">
-    <div class="container-fluid pt-1 text-center">
+    <div class="container-fluid pt-1 text-center" id="dashFragment">
         <a href="/events">
             <div class="circle mx-auto my-5" th:style="'background-color: '+${colour}"></div>
             <div th:if="${colour.equals('green')}" class="container">
@@ -22,7 +22,7 @@
                 <h3 style="text-decoration: none; color: black">Some unusual activity detected on the honeypot, inspect the logs and follow the guidebook</br>Click to view events</h3>
             </div>
             <div th:if="${colour.equals('red')}" class="container">
-            <h3 style="text-decoration: none; color: black">Major activity detected on the honeypot! Escalate immediately!</br>Click to view events</h3>
+            <h3 style="text-decoration: none; color: black">Major activity detected on the honeypot! Act immediately!</br>Click to view events</h3>
             </div>
         </a>
     </div>
@@ -33,4 +33,18 @@
 <div th:replace="fragments/footer :: footer">...</div>
 
 </body>
+
+<footer>
+    <script>
+        function updateDash() {
+            $.get({
+                url : "/dash_fragment",
+                success : function (fragment) { // get from controller
+                    $("#dashFragment").replaceWith(fragment); // update snippet of page
+                }
+            });
+        };
+        setInterval(updateDash, 2000);
+    </script>
+</footer>
 </html>
